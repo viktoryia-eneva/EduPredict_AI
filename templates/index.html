@@ -3,34 +3,237 @@
     <head>
         <meta charset="UTF-8">
         <title>EduPredict AI</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
     </head>
 
     <body>
-        <h1>EduPredict AI</h1>
-        <p>Enter student information to estimate dropout risk.</p>
 
-        <form method="POST" action="/predict">
-            <label>Age at enrollment:</label>
-            <input type="number" name="age" required>
+        <div class="container">
+            <h1>EduPredict AI</h1>
+        <p class="subtitle">
+            Early student dropout risk prediction using machine learning
+
+        </p>
+
+        <div class="card">
+
+          <form method="POST" action="/predict">
+
+            <div class="form-grid">
+                <div>
+             <label>Age at enrollment:</label>
+             <input type="number"
+                    name="age"
+                    min="17"
+                    max="70"
+                    required>
+
+             <br><br>
+
+             <label>Admission grade (0-200):</label>
+             <input type="number" 
+                    step="0.01" 
+                    name="admission_grade"
+                    min="0"
+                    max="200"
+                    required>
+
+             <br><br>
+
+              <label>Application mode:</label>
+            <select name="application_mode" required>
+                <option value="1">General admission - first phase</option>
+                <option value="17">General admission - second phase</option>
+                <option value="39">Over 23 years old admission</option>
+                <option value="42">Transfer</option>
+            </select>
 
             <br><br>
 
-            <label>Admission grade:</label>
-            <input type="number" step="0.01" name="admission_grade" required>
+             <label>Application order:</label>
+            <select name="application_order" required>
+                <option value="0">First Choice</option>
+                <option value="1">Second Choice</option>
+                <option value="2">Third Choice</option>
+                <option value="3">Fourth Choice</option>
+                <option value="4">Fifth Choice</option>
+                <option value="5">Sixth Choice</option>
+                <option value="6">Seventh Choice</option>
+                <option value="7">Eighth Choice</option>
+                <option value="8">Ninth Choice</option>
+                <option value="9">Last Choice</option>
+            </select>
 
             <br><br>
 
-            <label>First semester approved units:</label>
-            <input type="number" name="approved_units" required>
+              <label>Course / Major:</label>
+            <input list="course" name="course_name" required>
+            <datalist id="course">
+                <option value="Biofuel Production Technologies">
+                <option value="Animation and Multimedia Design">
+                <option value="Social Service (evening attendance)">
+                <option value="Agronomy">
+                <option value="Communication Design">
+                <option value="Veterinary Nursing">
+                <option value="Informatics Engineering">
+                <option value="Equinculture">
+                <option value="Management">
+                <option value="Social Service">
+                <option value="Tourism">
+                <option value="Nursing">
+                <option value="Oral Hygiene">
+                <option value="Advertising and Marketing Management">
+                <option value="Journalism and Communication">
+                <option value="Basic Education">
+                <option value="Management (evening attendance)">
+            </datalist>
+            
+            
+            <br><br>
+
+            
+            <label>Daytime/evening attendance:</label>
+            <select name="attendance" required>
+                <option value="1">Daytime</option>
+                <option value="0">Evening</option>
+            </select>
 
             <br><br>
 
-            <label>First semester grade:</label>
-            <input type="number" step="0.01" name="first_sem_grade" required>
+            <label>Previous qualification:</label>
+            <select name="previous_qualification" required>
+                <option value="1">Secondary education</option>
+                <option value="2">Bachelor's degree</option>
+                <option value="4">Master's degree</option>
+                <option value="42">Professional higher technical course</option>
+            </select>
 
             <br><br>
+
+              <label>Gender:</label>
+            <select name="gender" required>
+                <option value="0">Female</option>
+                <option value="1">Male</option>
+            </select>
+
+            <br><br>
+
+             <label>Previous qualification grade (0-200):</label>
+             <input type="number"
+                    step="0.01" 
+                    name="previous_grade"
+                    min="0"
+                    max="200"
+                    required>
+
+              <br><br>
+
+              <label>International student:</label>
+            <select name="international" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+
+
+
+            </div>
+
+            <div>
+
+                  <label>First semester approved units:</label>
+             <input type="number"
+              name="approved_units"
+              min="0"
+               required>
+
+             <br><br>
+
+             <label>First semester grade (0-20):</label>
+             <input type="number"
+                    step="0.01"
+                    name="first_sem_grade"
+                    min="0"
+                    max="20"
+                    required>
+
+             <br><br>
+
+            <label>First semester evaluations:</label>
+            <input type="number" 
+            name="first_sem_evaluations"
+             min="0"
+             required>
+
+            <br><br>
+
+            <label>First semester credited units:</label>
+            <input type="number" 
+            name="first_sem_credited" 
+             min="0"
+            required>
+
+            <br><br>
+
+            <label>First semester without evaluations:</label>
+            <input type="number"
+             name="first_sem_without_evaluations"
+              min="0"
+              required>
+
+            <br><br>
+
+            <label>First semester enrolled units:</label>
+            <input type="number" name="first_sem_enrolled" required>
+
+            <br><br>
+
+               <label>Scholarship holder:</label>
+            <select name="scholarship" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+              <br><br>
+
+            <label>Debtor:</label>
+            <select name="debtor" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <br><br>
+
+            <label>Tuition fees up to date:</label>
+            <select name="tuition_up_to_date" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+
+            <br><br>
+
+            <label>Displaced:</label>
+            <select name="displaced" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            </div>
+        </div>
+
+        <div class="center-filed">
+
+             <label>Educational special needs:</label>
+            <select name="special_needs" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+         </div>
 
             <button type="submit">Predict dropout risk</button>
         </form>
+        </div>
+        </div>
     </body>
 </html>
