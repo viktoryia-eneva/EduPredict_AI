@@ -3,6 +3,11 @@ Machine learning project for early prediction of student dropout risk using acad
 
 The project combines data analysis, machine learning, and a Flask web application that allows users to enter student information and receive an estimated dropout risk.
 
+## Live Demo
+
+Try the deployed application here:
+[EduPredict AI](https://edupredict-ai-6j6t.onrender.com/)
+
 ## Project Objective
 The main goal is to explore whether students at risk of dropping out can be identified early enough to allow possible academic intervention. 
 
